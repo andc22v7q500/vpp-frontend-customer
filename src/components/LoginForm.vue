@@ -33,7 +33,7 @@ const submitUser = () => {
       <Field name="mat_khau" type="password" class="form-control" v-model="localUser.mat_khau" />
       <ErrorMessage name="mat_khau" class="error-feedback" />
     </div>
-    <div class="form-group">
+    <div class="form-group mt-3">
       <button class="btn btn-primary">Đăng nhập</button>
     </div>
   </Form>

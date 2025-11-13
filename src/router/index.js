@@ -27,6 +27,24 @@ const router = createRouter({
       name: 'signup',
       component: () => import('../views/SignupView.vue'),
     },
+    // --- THÊM CÁC ROUTE MỚI ĐƯỢC BẢO VỆ ---
+    {
+      path: '/profile',
+      name: 'profile',
+      component: () => import('../views/ProfileView.vue'),
+    },
+    {
+      path: '/order-history',
+      name: 'order.history',
+      // Tạm thời trỏ đến ProfileView, chúng ta sẽ tạo trang riêng sau
+      component: () => import('../views/ProfileView.vue'),
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      // Tạm thời trỏ đến ProfileView, chúng ta sẽ tạo trang riêng sau
+      component: () => import('../views/ProfileView.vue'),
+    },
   ],
 })
 

@@ -1,8 +1,9 @@
 // src/main.js
 
-import './assets/main.css'
+// import './assets/main.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
+import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia' // <-- Đã import createPinia chưa?

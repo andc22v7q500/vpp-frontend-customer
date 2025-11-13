@@ -57,7 +57,7 @@ const submitUser = () => {
       />
       <ErrorMessage name="passwordConfirmation" class="error-feedback" />
     </div>
-    <div class="form-group">
+    <div class="form-group mt-3">
       <button class="btn btn-primary">Đăng ký</button>
     </div>
   </Form>

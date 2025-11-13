@@ -36,14 +36,24 @@ const router = createRouter({
     {
       path: '/order-history',
       name: 'order.history',
-      // Tạm thời trỏ đến ProfileView, chúng ta sẽ tạo trang riêng sau
+
       component: () => import('../views/ProfileView.vue'),
     },
     {
       path: '/cart',
       name: 'cart',
-      // Tạm thời trỏ đến ProfileView, chúng ta sẽ tạo trang riêng sau
-      component: () => import('../views/ProfileView.vue'),
+
+      component: () => import('../views/CartView.vue'),
+    },
+    {
+      path: '/address-book',
+      name: 'address.book',
+      component: () => import('../views/AddressBookView.vue'),
+    },
+    {
+      path: '/checkout',
+      name: 'checkout',
+      component: () => import('../views/CheckoutView.vue'),
     },
   ],
 })

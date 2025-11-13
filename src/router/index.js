@@ -9,12 +9,23 @@ const router = createRouter({
       name: 'home',
       component: HomeView, // Đăng ký component
     },
-    // Chúng ta sẽ thêm route cho trang chi tiết ở đây sau
+
     {
       path: '/san-pham/:id', // URL sẽ có dạng /san-pham/1, /san-pham/2...
       name: 'product.detail', // Tên này phải KHỚP với tên trong <router-link>
       component: () => import('../views/ProductDetailView.vue'),
       props: true, // Tự động truyền :id từ URL vào làm prop cho component
+    },
+
+    {
+      path: '/login',
+      name: 'login',
+      component: () => import('../views/LoginView.vue'),
+    },
+    {
+      path: '/signup',
+      name: 'signup',
+      component: () => import('../views/SignupView.vue'),
     },
   ],
 })

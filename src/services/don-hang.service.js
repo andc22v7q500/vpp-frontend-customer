@@ -19,7 +19,19 @@ class DonHangService {
     return (await this.api.post('/', data)).data
   }
 
-  // (Các hàm lấy lịch sử đơn hàng sẽ được thêm sau)
+  /**
+   * [USER] Lấy danh sách tất cả đơn hàng của người dùng đang đăng nhập.
+   */
+  async getAllForUser() {
+    return (await this.api.get('/')).data
+  }
+
+  /**
+   * [USER] Lấy chi tiết một đơn hàng của người dùng đang đăng nhập.
+   */
+  async getForUser(id) {
+    return (await this.api.get(`/${id}`)).data
+  }
 }
 
 export default new DonHangService()

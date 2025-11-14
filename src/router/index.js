@@ -37,7 +37,7 @@ const router = createRouter({
       path: '/order-history',
       name: 'order.history',
 
-      component: () => import('../views/ProfileView.vue'),
+      component: () => import('../views/OrderHistoryView.vue'),
     },
     {
       path: '/cart',
@@ -54,6 +54,13 @@ const router = createRouter({
       path: '/checkout',
       name: 'checkout',
       component: () => import('../views/CheckoutView.vue'),
+    },
+    {
+      path: '/order/:id',
+      name: 'order.detail',
+      // Chúng ta sẽ tạo component này ở bước tiếp theo
+      component: () => import('../views/OrderDetailView.vue'),
+      props: true,
     },
   ],
 })

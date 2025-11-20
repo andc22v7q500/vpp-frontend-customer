@@ -1,28 +1,36 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, watch } from 'vue'
+import { useRoute } from 'vue-router' // Import useRoute
 import SanPhamService from '@/services/san-pham.service'
 import ProductCard from '@/components/ProductCard.vue'
+import AppBanner from '@/components/AppBanner.vue'
 
-// Biến reactive để lưu danh sách sản phẩm
 const products = ref([])
+const route = useRoute() // Khởi tạo route
 
-// Hàm để gọi API và lấy dữ liệu
 const retrieveProducts = async () => {
   try {
-    products.value = await SanPhamService.getAll()
+    // Lấy các tham số từ URL (ví dụ: ?search=bút)
+    const params = route.query
+    products.value = await SanPhamService.getAll(params)
   } catch (error) {
     console.error(error)
   }
 }
 
-// Gọi hàm retrieveProducts khi component được mounted (tải lần đầu)
-onMounted(() => {
-  retrieveProducts()
-})
+// Theo dõi sự thay đổi của URL (khi người dùng tìm kiếm)
+watch(
+  () => route.query,
+  () => {
+    retrieveProducts()
+  },
+  { immediate: true },
+) // immediate: true để chạy ngay lần đầu tiên
 </script>
 
 <template>
   <div class="container">
+    <AppBanner />
     <h1 class="my-4">Danh sách Sản phẩm</h1>
     <div class="row">
       <!-- Dùng v-for để lặp qua danh sách sản phẩm -->

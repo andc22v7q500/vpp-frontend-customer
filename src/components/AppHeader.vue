@@ -1,17 +1,25 @@
 <script setup>
-import { RouterLink } from 'vue-router'
+import { RouterLink, useRouter } from 'vue-router'
 import { useAuthStore } from '@/stores/auth.store'
-import { computed } from 'vue'
+import { ref, computed } from 'vue'
 
 const authStore = useAuthStore()
+const router = useRouter()
+const searchTerm = ref('')
 
 // Dùng computed property để tự động cập nhật khi state thay đổi
 const user = computed(() => authStore.user)
 
+const handleSearch = () => {
+  if (searchTerm.value.trim()) {
+    // Chuyển hướng đến trang chủ và truyền từ khóa tìm kiếm qua query
+    router.push({ name: 'home', query: { search: searchTerm.value.trim() } })
+  }
+}
+
 const handleLogout = () => {
   authStore.logout()
-  // Sau khi logout, có thể chuyển hướng về trang chủ hoặc trang login
-  // Chúng ta sẽ làm điều này trong component sau
+  router.push({ name: 'home' }) // Sau khi logout, quay về trang chủ
 }
 </script>
 
@@ -38,6 +46,21 @@ const handleLogout = () => {
             </RouterLink>
           </li>
         </ul>
+        <!-- Thanh tìm kiếm ở giữa -->
+        <div class="mx-auto" style="width: 50%">
+          <form class="d-flex" @submit.prevent="handleSearch">
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Bạn muốn tìm gì hôm nay?"
+              aria-label="Search"
+              v-model="searchTerm"
+            />
+            <button class="btn btn-outline-success" type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
 
         <ul class="navbar-nav">
           <!-- Nếu người dùng đã đăng nhập -->

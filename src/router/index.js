@@ -63,6 +63,11 @@ const router = createRouter({
       props: true,
     },
     {
+      path: '/payment-result',
+      name: 'payment.result',
+      component: () => import('../views/PaymentResult.vue'),
+    },
+    {
       path: '/:pathMatch(.*)*',
       name: 'notfound',
       component: () => import('../views/NotFound.vue'),

@@ -45,6 +45,7 @@ const retrieveData = async () => {
 }
 
 const placeOrder = async () => {
+  // 1. Validate dữ liệu (như cũ)
   if (!selectedAddressId.value) {
     message.value = 'Vui lòng chọn địa chỉ giao hàng.'
     return
@@ -55,15 +56,25 @@ const placeOrder = async () => {
   }
 
   try {
+    // 2. Chuẩn bị dữ liệu gửi lên
     const orderData = {
       ma_dia_chi: selectedAddressId.value,
-      phuong_thuc_thanh_toan: paymentMethod.value,
-      // Chỉ gửi ID của các sản phẩm trong trang checkout
+      phuong_thuc_thanh_toan: paymentMethod.value, // 'cod' hoặc 'vnpay'
       cartItemIds: checkoutItems.value.map((item) => item.id),
     }
+
+    // 3. Gọi API tạo đơn hàng
     const result = await DonHangService.create(orderData)
-    alert(`Đặt hàng thành công! Mã đơn hàng của bạn là: ${result.orderId}`)
-    router.push({ name: 'order.history' })
+
+    // 4. XỬ LÝ KẾT QUẢ (Phần mới nâng cấp)
+    if (result.paymentUrl) {
+      // TRƯỜNG HỢP VNPAY: Có link thanh toán -> Chuyển hướng trình duyệt sang VNPAY
+      window.location.href = result.paymentUrl
+    } else {
+      // TRƯỜNG HỢP COD: Không có link -> Thông báo thành công và về trang lịch sử
+      alert(`Đặt hàng thành công! Mã đơn hàng của bạn là: ${result.orderId}`)
+      router.push({ name: 'order.history' })
+    }
   } catch (error) {
     console.error(error)
     message.value = error.response?.data?.message || 'Đã có lỗi xảy ra khi đặt hàng.'
@@ -137,6 +148,24 @@ onMounted(() => {
       <label class="form-check-label" for="cod"> Thanh toán khi nhận hàng (COD) </label>
     </div>
     <!-- Sau này có thể thêm VNPAY ở đây -->
+    <div class="form-check mb-2">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="paymentMethod"
+        id="vnpay"
+        value="vnpay"
+        v-model="paymentMethod"
+      />
+      <label class="form-check-label" for="vnpay">
+        Thanh toán Online qua VNPAY (Thẻ ATM/Visa nội địa)
+      </label>
+      <img
+        src="https://sandbox.vnpayment.vn/paymentv2/images/bank/ncb_logo.png"
+        height="30"
+        class="ms-2"
+      />
+    </div>
 
     <hr />
     <button class="w-100 btn btn-primary btn-lg" @click="placeOrder">Đặt hàng</button>

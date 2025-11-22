@@ -34,7 +34,10 @@ const formatCurrency = (value) => {
     <div class="card-body">
       <h5 class="card-title">{{ product.ten_san_pham }}</h5>
       <p class="card-text text-danger">
-        <strong>{{ formatCurrency(product.gia_thap_nhat) }}</strong>
+        <strong v-if="product.gia_thap_nhat === product.gia_cao_nhat">
+          {{ formatCurrency(product.gia_thap_nhat) }}
+        </strong>
+        <strong v-else> Từ {{ formatCurrency(product.gia_thap_nhat) }} </strong>
       </p>
     </div>
 

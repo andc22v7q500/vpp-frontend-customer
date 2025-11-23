@@ -1,6 +1,7 @@
 <script setup>
 import { RouterView } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
+import AppChatbox from '@/components/AppChatbox.vue'
 </script>
 
 <template>
@@ -9,7 +10,7 @@ import AppHeader from '@/components/AppHeader.vue'
   <main class="container py-4">
     <RouterView />
   </main>
-
+  <AppChatbox />
   <!-- Chúng ta có thể thêm AppFooter ở đây sau -->
 </template>
 

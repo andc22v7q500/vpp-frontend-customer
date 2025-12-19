@@ -54,13 +54,48 @@ const formatCurrency = (value) => {
 </template>
 
 <style scoped>
-.card-title {
-  height: 48px;
+.card {
+  border: none; /* Bỏ viền đen mặc định */
+  border-radius: 12px; /* Bo tròn góc nhiều hơn */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08); /* Bóng mờ nhẹ */
+  transition: all 0.3s ease; /* Hiệu ứng mượt */
   overflow: hidden;
+  height: 100%; /* Đảm bảo các card bằng nhau */
 }
+
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s ease-in-out;
+  transform: translateY(-5px); /* Nổi lên khi di chuột */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Bóng đậm hơn */
+}
+
+.card-img-top {
+  height: 200px;
+  object-fit: contain; /* Đảm bảo ảnh không bị méo */
+  padding: 15px; /* Thêm khoảng cách để ảnh không dính lề */
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+}
+
+.card-title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  /* Giới hạn 2 dòng tiêu đề, dài quá thì ... */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  height: 38px; /* Cố định chiều cao tiêu đề */
+}
+
+.price-text {
+  color: #d70018; /* Màu đỏ đặc trưng của giá tiền */
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-top: auto; /* Đẩy giá xuống đáy body */
 }
 </style>

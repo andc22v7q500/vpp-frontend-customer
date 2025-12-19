@@ -24,7 +24,7 @@ const handleLogout = () => {
 </script>
 
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+  <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow-sm">
     <div class="container">
       <RouterLink class="navbar-brand" :to="{ name: 'home' }"> VPP-Shop </RouterLink>
       <button
@@ -50,13 +50,13 @@ const handleLogout = () => {
         <div class="mx-auto" style="width: 50%">
           <form class="d-flex" @submit.prevent="handleSearch">
             <input
-              class="form-control me-2"
+              class="form-control me-0"
               type="search"
               placeholder="Bạn muốn tìm gì hôm nay?"
               aria-label="Search"
               v-model="searchTerm"
             />
-            <button class="btn btn-outline-success" type="submit">
+            <button class="btn btn-search" type="submit">
               <i class="fas fa-search"></i>
             </button>
           </form>
@@ -116,11 +116,38 @@ const handleLogout = () => {
   </nav>
 </template>
 
+<!-- Style -->
 <style scoped>
 .navbar-brand {
-  font-weight: bold;
+  font-weight: 800;
+  color: #0d6efd !important; /* Màu xanh chủ đạo (Primary Blue) */
+  font-size: 1.5rem;
+  letter-spacing: 1px;
 }
-.dropdown-menu {
-  min-width: auto;
+
+.form-control {
+  border-radius: 20px 0 0 20px;
+  border: 1px solid #ced4da;
+  border-right: none; /* Bỏ viền phải */
+}
+
+.btn-search {
+  background-color: #0d6efd; /* Dùng màu xanh giống Logo */
+  color: white;
+  border: 1px solid #0d6efd;
+  border-radius: 0 20px 20px 0;
+  padding-left: 20px;
+  padding-right: 20px;
+  transition: all 0.3s;
+}
+
+.btn-search:hover {
+  background-color: #0b5ed7; /* Màu xanh đậm hơn khi hover */
+  border-color: #0b5ed7;
+}
+
+.form-control:focus {
+  box-shadow: none;
+  border-color: #0d6efd;
 }
 </style>

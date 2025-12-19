@@ -54,7 +54,7 @@ onUnmounted(() => {
   <div class="chat-container">
     <!-- Nút mở chat -->
     <button class="chat-toggle-btn" @click="toggleChat" v-if="!isOpen">
-      <i class="fas fa-comments"></i> Chat với AI
+      <i class="fas fa-comments"></i> Chat
     </button>
 
     <!-- Cửa sổ chat -->

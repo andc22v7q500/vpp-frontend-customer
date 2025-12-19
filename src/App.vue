@@ -2,16 +2,18 @@
 import { RouterView } from 'vue-router'
 import AppHeader from '@/components/AppHeader.vue'
 import AppChatbox from '@/components/AppChatbox.vue'
+import AppFooter from '@/components/AppFooter.vue'
 </script>
 
 <template>
   <AppHeader />
 
-  <main class="container py-4">
+  <main class="container mt-4" style="min-height: 80vh">
     <RouterView />
   </main>
   <AppChatbox />
   <!-- Chúng ta có thể thêm AppFooter ở đây sau -->
+  <AppFooter />
 </template>
 
 <style>

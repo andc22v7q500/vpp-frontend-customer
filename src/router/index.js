@@ -8,6 +8,7 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView, // Đăng ký component
+      meta: { layout: 'wide' },
     },
 
     {
@@ -15,6 +16,7 @@ const router = createRouter({
       name: 'product.detail', // Tên này phải KHỚP với tên trong <router-link>
       component: () => import('../views/ProductDetailView.vue'),
       props: true, // Tự động truyền :id từ URL vào làm prop cho component
+      meta: { layout: 'wide' },
     },
 
     {

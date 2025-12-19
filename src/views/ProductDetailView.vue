@@ -119,6 +119,18 @@ onMounted(() => {
 
 <template>
   <div class="page" v-if="product">
+    <nav aria-label="breadcrumb" class="mb-4">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <router-link :to="{ name: 'home' }" class="text-decoration-none">Trang chủ</router-link>
+        </li>
+        <!-- Nếu em có link danh mục thì thêm vào, hiện tại để text thường -->
+        <li class="breadcrumb-item text-muted">{{ product.ten_danh_muc }}</li>
+        <li class="breadcrumb-item active text-dark" aria-current="page">
+          {{ product.ten_san_pham }}
+        </li>
+      </ol>
+    </nav>
     <div class="row">
       <!-- === CỘT HÌNH ẢNH (BÊN TRÁI) - ĐÃ SỬA LỖI === -->
       <div class="col-md-7">

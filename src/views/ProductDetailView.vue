@@ -1,11 +1,12 @@
 <script setup>
-import { ref, onMounted, computed } from 'vue'
+import { ref, onMounted, computed, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import SanPhamService from '@/services/san-pham.service'
 import GioHangService from '@/services/gio-hang.service'
 import { useAuthStore } from '@/stores/auth.store'
 import DanhGiaService from '@/services/danh-gia.service'
 import ReviewForm from '@/components/ReviewForm.vue'
+import ProductCard from '@/components/ProductCard.vue'
 
 const product = ref(null)
 const route = useRoute()
@@ -18,6 +19,7 @@ const message = ref('')
 const activeImageUrl = ref('')
 const canUserReview = ref(false)
 const reviewMessage = ref('')
+const relatedProducts = ref([])
 
 const checkReviewPermission = async (productId) => {
   if (!authStore.user) {
@@ -41,6 +43,8 @@ const getProduct = async (id) => {
     if (product.value?.hinh_anh?.length > 0) {
       activeImageUrl.value = `http://localhost:3000/${product.value.hinh_anh[0].url_hinh_anh}`
     }
+    const res = await SanPhamService.getAll({ danhmuc: product.value.ma_danh_muc })
+    relatedProducts.value = res.filter((p) => p.id !== product.value.id).slice(0, 4)
     await checkReviewPermission(id)
   } catch (error) {
     console.error(error)
@@ -115,6 +119,18 @@ const formatDate = (dateTimeString) => {
 onMounted(() => {
   getProduct(route.params.id)
 })
+watch(
+  () => route.params.id,
+  (newId) => {
+    if (newId) {
+      // 1. Tải lại dữ liệu sản phẩm mới
+      getProduct(newId)
+
+      // 2. Cuộn trang lên đầu (để tạo cảm giác như vừa vào trang mới)
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  },
+)
 </script>
 
 <template>
@@ -256,6 +272,20 @@ onMounted(() => {
         </div>
         <div v-else>
           <p>Chưa có đánh giá nào cho sản phẩm này.</p>
+        </div>
+      </div>
+      <!-- VỊ TRÍ 2: Sản phẩm liên quan -->
+      <div class="related-products mt-5 mb-3" v-if="relatedProducts.length > 0">
+        <h4 class="mb-4">Sản phẩm liên quan</h4>
+        <div class="row">
+          <div
+            class="col-lg-3 col-md-4 col-sm-6 mb-4"
+            v-for="item in relatedProducts"
+            :key="item.id"
+          >
+            <!-- Tái sử dụng component ProductCard -->
+            <ProductCard :product="item" />
+          </div>
         </div>
       </div>
     </div>

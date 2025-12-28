@@ -65,4 +65,37 @@ const submitUser = () => {
 
 <style scoped>
 @import '@/assets/form.css';
+.form-control {
+  border-radius: 10px;
+  padding: 12px 15px;
+  border: 1px solid #dee2e6;
+  background-color: #f8f9fa;
+  transition: all 0.3s;
+}
+
+.form-control:focus {
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.15);
+  border-color: #0d6efd;
+}
+
+.btn-primary {
+  border-radius: 10px;
+  padding: 12px;
+  font-weight: 600;
+  font-size: 1rem;
+  width: 100%; /* Nút full chiều rộng */
+  box-shadow: 0 4px 6px rgba(13, 110, 253, 0.2);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+}
+
+label {
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 5px;
+  margin-top: 10px; /* Thêm chút khoảng cách phía trên label */
+}
 </style>

@@ -14,11 +14,10 @@ const handleSignup = async (data) => {
     errorMessage.value = ''
     successMessage.value = ''
     await authStore.signup(data)
-    successMessage.value = 'Đăng ký tài khoản thành công! Bạn có thể đăng nhập ngay bây giờ.'
-    // Tùy chọn: Tự động chuyển hướng đến trang đăng nhập sau vài giây
+    successMessage.value = 'Đăng ký thành công! Đang chuyển hướng...'
     setTimeout(() => {
       router.push({ name: 'login' })
-    }, 3000)
+    }, 2000)
   } catch (error) {
     console.error(error)
     errorMessage.value = error.response?.data?.message || 'Đã có lỗi xảy ra khi đăng ký.'
@@ -27,14 +26,42 @@ const handleSignup = async (data) => {
 </script>
 
 <template>
-  <div class="page">
-    <h4>Đăng ký tài khoản</h4>
-    <SignupForm @submit:signup="handleSignup" />
-    <p v-if="successMessage" class="alert alert-success mt-3">{{ successMessage }}</p>
-    <p v-if="errorMessage" class="error-feedback mt-3">{{ errorMessage }}</p>
-    <p class="mt-3">
-      Đã có tài khoản?
-      <router-link :to="{ name: 'login' }">Đăng nhập</router-link>
-    </p>
+  <div class="login-wrapper">
+    <div class="login-card shadow-lg">
+      <h2 class="text-center mb-4 text-primary fw-bold">Đăng ký tài khoản</h2>
+
+      <SignupForm @submit:signup="handleSignup" />
+
+      <p v-if="successMessage" class="alert alert-success mt-3 text-center">{{ successMessage }}</p>
+      <p v-if="errorMessage" class="alert alert-danger mt-3 text-center">{{ errorMessage }}</p>
+
+      <div class="text-center mt-4">
+        <span class="text-muted">Đã có tài khoản?</span>
+        <router-link :to="{ name: 'login' }" class="fw-bold ms-2 text-decoration-none">
+          Đăng nhập
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+/* Copy y hệt style từ LoginView sang */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  background-color: #f0f2f5;
+  padding: 20px; /* Thêm padding để trên mobile không bị dính lề */
+}
+
+.login-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px;
+  width: 100%;
+  max-width: 500px; /* Đăng ký nhiều trường hơn nên cho rộng hơn login xíu (450 -> 500) */
+  border: none;
+}
+</style>

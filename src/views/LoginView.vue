@@ -22,13 +22,41 @@ const handleLogin = async (data) => {
 </script>
 
 <template>
-  <div class="page">
-    <h4>Đăng nhập</h4>
-    <LoginForm @submit:login="handleLogin" />
-    <p v-if="errorMessage" class="error-feedback mt-3">{{ errorMessage }}</p>
-    <p class="mt-3">
-      Chưa có tài khoản?
-      <router-link :to="{ name: 'signup' }">Đăng ký ngay</router-link>
-    </p>
+  <div class="login-wrapper">
+    <div class="login-card shadow-lg">
+      <h2 class="text-center mb-4 text-primary fw-bold">Đăng nhập</h2>
+
+      <LoginForm @submit:login="handleLogin" />
+
+      <p v-if="errorMessage" class="alert alert-danger mt-3 text-center">{{ errorMessage }}</p>
+
+      <div class="text-center mt-4">
+        <span class="text-muted">Chưa có tài khoản?</span>
+        <router-link :to="{ name: 'signup' }" class="fw-bold ms-2 text-decoration-none">
+          Đăng ký ngay
+        </router-link>
+      </div>
+    </div>
   </div>
 </template>
+
+<style scoped>
+/* Tạo nền cho toàn trang đăng nhập */
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Căn giữa theo chiều dọc */
+  background-color: #f0f2f5; /* Màu nền xám nhẹ hiện đại */
+}
+
+/* Style cho cái thẻ chứa form */
+.login-card {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 15px; /* Bo góc mềm mại */
+  width: 100%;
+  max-width: 450px; /* Giới hạn chiều rộng */
+  border: none; /* Bỏ viền đen xấu xí */
+}
+</style>

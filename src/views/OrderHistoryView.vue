@@ -31,6 +31,8 @@ const getStatusClass = (status) => {
   switch (status) {
     case 'cho_xac_nhan':
       return 'text-warning'
+    case 'cho_thanh_toan':
+      return 'text-danger'
     case 'dang_xu_ly':
       return 'text-info'
     case 'dang_giao':
@@ -47,6 +49,7 @@ const getStatusClass = (status) => {
 const getStatusText = (status) => {
   const statuses = {
     cho_xac_nhan: 'Chờ xác nhận',
+    cho_thanh_toan: 'Chưa thanh toán',
     dang_xu_ly: 'Đang xử lý',
     dang_giao: 'Đang giao',
     hoan_thanh: 'Hoàn thành',

@@ -82,6 +82,11 @@ const router = createRouter({
       name: 'notfound',
       component: () => import('../views/NotFound.vue'),
     },
+    {
+      path: '/payment-gateway',
+      name: 'payment.gateway',
+      component: () => import('../views/FakePaymentGateway.vue'),
+    },
   ],
 })
 

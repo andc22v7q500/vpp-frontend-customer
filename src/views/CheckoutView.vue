@@ -166,6 +166,19 @@ onMounted(() => {
         class="ms-2"
       />
     </div>
+    <div class="form-check mb-2">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="paymentMethod"
+        id="vnpay_fake"
+        value="vnpay_fake"
+        v-model="paymentMethod"
+      />
+      <label class="form-check-label text-muted" for="vnpay_fake">
+        <i class="fas fa-flask"></i> Thanh toán Giả lập (Backup Demo)
+      </label>
+    </div>
 
     <hr />
     <button class="w-100 btn btn-primary btn-lg" @click="placeOrder">Đặt hàng</button>

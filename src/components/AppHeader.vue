@@ -83,7 +83,7 @@ const handleLogout = () => {
               </li>
               <li>
                 <RouterLink class="dropdown-item" :to="{ name: 'address.book' }">
-                  Sổ địa chỉ
+                  Đia chỉ
                 </RouterLink>
               </li>
               <li>

@@ -74,7 +74,7 @@ onMounted(() => {
   <div class="page row">
     <div class="col-md-5">
       <h4>
-        Sổ địa chỉ
+        Địa chỉ
         <i class="fas fa-address-book"></i>
       </h4>
       <ul class="list-group">

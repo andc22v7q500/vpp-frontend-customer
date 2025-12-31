@@ -117,7 +117,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <h2 class="my-4 text-center section-title">Sản phẩm nổi bật</h2>
+    <h2 class="my-4 text-center section-title">Sản phẩm</h2>
 
     <div class="row" v-if="products.length > 0">
       <div v-for="product in products" :key="product.id" class="col-lg-3 col-md-4 col-sm-6 mb-4">

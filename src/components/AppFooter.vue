@@ -1,7 +1,7 @@
 <template>
   <footer class="bg-white text-center py-4 mt-5 shadow-top">
     <div class="container">
-      <p class="mb-0 text-muted">© 2024 VPP-Shop. Đồ án tốt nghiệp.</p>
+      <p class="mb-0 text-muted">© 2025 VPP-Shop. Tiểu luận tốt nghiệp.</p>
       <small class="text-muted">Địa chỉ: Cần Thơ - Email: support@vpp.com</small>
     </div>
   </footer>

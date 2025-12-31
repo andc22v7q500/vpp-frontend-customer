@@ -54,13 +54,13 @@ onUnmounted(() => {
   <div class="chat-container">
     <!-- Nút mở chat -->
     <button class="chat-toggle-btn" @click="toggleChat" v-if="!isOpen">
-      <i class="fas fa-comments"></i> Chat
+      <i class="fas fa-comments"></i> Hỗ trợ
     </button>
 
     <!-- Cửa sổ chat -->
     <div class="chat-window" v-if="isOpen">
       <div class="chat-header">
-        <span>Trợ lý ảo VPP</span>
+        <span>Góc hỗ trợ nhỏ</span>
         <button class="close-btn" @click="toggleChat">&times;</button>
       </div>
 

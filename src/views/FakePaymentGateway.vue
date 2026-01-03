@@ -33,7 +33,7 @@ const handlePayment = () => {
       await api.put(`/${orderId}/thanh-toan-gia-lap`)
 
       // 3. Chuyển hướng về trang Kết quả thành công
-      // Chúng ta tái sử dụng trang PaymentResult hoặc về thẳng Lịch sử
+
       alert('Giao dịch thành công! Tiền đã được trừ.')
       router.push({ name: 'order.history' })
     } catch (error) {

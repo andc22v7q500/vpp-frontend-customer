@@ -1,4 +1,4 @@
-// src/services/danh-gia.service.js (Phiên bản "Sạch" cho Trang Khách hàng)
+// src/services/danh-gia.service.js
 
 import createApiClient from './api.service'
 import { useAuthStore } from '@/stores/auth.store'

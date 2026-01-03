@@ -1,7 +1,7 @@
 // src/stores/auth.store.js
 
 import { defineStore } from 'pinia'
-import { ref } from 'vue' // Import ref từ vue
+import { ref } from 'vue'
 import AuthService from '@/services/auth.service'
 
 export const useAuthStore = defineStore('auth', () => {
@@ -32,10 +32,9 @@ export const useAuthStore = defineStore('auth', () => {
     await AuthService.signup(data)
   }
 
-  // --- GETTERS --- (Chúng ta sẽ cần cái này sau)
+  // --- GETTERS ---
   // computed() tương đương với getters
   // const isLoggedIn = computed(() => !!user.value);
 
-  // Phải return tất cả những gì muốn component khác sử dụng
   return { user, returnUrl, login, logout, signup }
 })

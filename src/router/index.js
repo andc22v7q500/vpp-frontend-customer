@@ -68,7 +68,7 @@ const router = createRouter({
     {
       path: '/order/:id',
       name: 'order.detail',
-      // Chúng ta sẽ tạo component này ở bước tiếp theo
+
       component: () => import('../views/OrderDetailView.vue'),
       props: true,
     },

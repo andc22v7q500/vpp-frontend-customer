@@ -27,7 +27,7 @@ const route = useRoute()
 /* CSS toàn cục */
 body {
   background-color: #f8f9fa;
-  /* THÊM DÒNG NÀY VÀO */
+
   padding-top: 70px; /* Tạo một khoảng đệm ở trên cùng của trang */
 }
 .page {

@@ -14,9 +14,6 @@ class SanPhamService {
   async get(id) {
     return (await this.api.get(`/${id}`)).data
   }
-
-  // Các hàm create, update, delete cho Admin sẽ được thêm sau
-  // khi chúng ta làm trang quản trị.
 }
 
 export default new SanPhamService()

@@ -120,7 +120,7 @@ const handleLogout = () => {
 <style scoped>
 .navbar-brand {
   font-weight: 800;
-  color: #0d6efd !important; /* Màu xanh chủ đạo (Primary Blue) */
+  color: #0d6efd !important;
   font-size: 1.5rem;
   letter-spacing: 1px;
 }
@@ -128,11 +128,11 @@ const handleLogout = () => {
 .form-control {
   border-radius: 20px 0 0 20px;
   border: 1px solid #ced4da;
-  border-right: none; /* Bỏ viền phải */
+  border-right: none;
 }
 
 .btn-search {
-  background-color: #0d6efd; /* Dùng màu xanh giống Logo */
+  background-color: #0d6efd;
   color: white;
   border: 1px solid #0d6efd;
   border-radius: 0 20px 20px 0;
@@ -142,7 +142,7 @@ const handleLogout = () => {
 }
 
 .btn-search:hover {
-  background-color: #0b5ed7; /* Màu xanh đậm hơn khi hover */
+  background-color: #0b5ed7;
   border-color: #0b5ed7;
 }
 

@@ -4,7 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import createApiClient from '@/services/api.service'
 
 const route = useRoute()
-const router = useRouter() // Dùng để chuyển trang
+const router = useRouter()
 const message = ref('Đang xác thực giao dịch với máy chủ...')
 const isSuccess = ref(false)
 const isLoading = ref(true)
